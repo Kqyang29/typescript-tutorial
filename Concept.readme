@@ -1,0 +1,64 @@
+let name: String;
+// ? number | String ==> age 既可以是number 也可以是String
+let age: number | String;
+let isStudent: boolean;
+let hobbies: String[];
+let role: [number, string];
+
+
+
+let person: Person;
+// ? type 是帮助 Object 细致化，包含object里面的属性
+type Person = {
+  name: String,
+  age: number,
+  // ?: ==> 表示 optional 输入该值
+  isStudent?: boolean
+}
+
+
+// ? Object[] ==> [{ name1,age1},{ name2,age2}]
+let lotsOfPeople: Person[];
+
+
+function printName(name: string) {
+  console.log(name);
+}
+printName("Yang");
+
+
+//? 让 printAge 这个func 参数是 string，返回的类型是void（返回undefined) 或者 never（不会返回任何值）
+let printAge: (name: String) => void;
+
+// ? 如果不知道是什么类型，可以用unkonwn
+let personName: unknown;
+
+
+interface Person1 {
+	name: String;
+	age: number;
+	isStudent?: boolean;
+};
+
+// ? type X 继承 interface Person1  的属性
+type X = Person1 & {
+  a: string,
+  b:string
+};
+
+// ? type Y 继承 type X 的属性
+type Y = X & {
+	c: string;
+	d: string;
+};
+
+// ? interface Guy 继承 interface Person1 的属性
+interface Guy extends Person1{
+	profession: string;
+};
+
+// ? interface Guy 继承 type X 的属性
+interface Guy extends X{
+	profession: string;
+};
+
